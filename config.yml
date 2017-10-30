@@ -1,6 +1,3 @@
-# Auth
-secret: ${SECRET:-RANDOM_SECRET}
-
 # Database settings.
 database:
 

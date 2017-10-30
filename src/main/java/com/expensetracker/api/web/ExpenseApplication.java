@@ -1,5 +1,8 @@
 package com.expensetracker.api.web;
 
+import com.expensetracker.api.web.db.LoginDAO;
+import com.expensetracker.api.web.resources.LoginResource;
+import com.expensetracker.api.web.services.LoginService;
 import io.dropwizard.Application;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
@@ -45,8 +48,14 @@ public class ExpenseApplication extends Application<ExpenseConfiguration> {
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
         jdbi.registerContainerFactory(new OptionalContainerFactory());
 
+        final LoginDAO loginDAO = jdbi.onDemand(LoginDAO.class);
+        final LoginService loginService = new LoginService(loginDAO);
+        final LoginResource loginResource = new LoginResource(loginService);
+
         environment.healthChecks().register("dbihealthcheck", new DBIHealthCheck(jdbi, "/* ping */ SELECT 1;"));
         environment.jersey().register(new JsonProcessingExceptionMapper(true));
+
+        environment.jersey().register(loginResource);
 
     }
 

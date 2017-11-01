@@ -5,10 +5,10 @@ database:
   driverClass: com.mysql.cj.jdbc.Driver
 
   # the username
-  user: travis
+  user: root
 
   # the password
-  password:
+  password: qburst
 
   # the JDBC URL
   url: jdbc:mysql://localhost:3306/expensetracker?autoReconnect=true&useSSL=false

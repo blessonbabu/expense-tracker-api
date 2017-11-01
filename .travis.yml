@@ -2,11 +2,8 @@ language: java
 jdk:
   - oraclejdk8
 
-before_script:
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('qburst') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-
 before_install:
-  - mysql -u root --password="qburst" < src/test/resources/travis.sql
+  - mysql -u travis --password="" < src/test/resources/travis.sql
 
 install: true
 script:
@@ -20,6 +17,5 @@ services:
 test:
   adapter: mysql2
   database: expensetracker
-  username: root
+  username: travis
   encoding: utf8
-

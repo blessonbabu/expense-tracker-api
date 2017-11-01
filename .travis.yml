@@ -3,7 +3,7 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - mysql -u travis --password="" < travis.sql
+  - mysql -u travis --password="" < src/test/resources/travis.sql
 
 install: true
 script:

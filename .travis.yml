@@ -8,3 +8,14 @@ script:
 cache:
   directories:
   - $HOME/.m2
+
+services:
+  - mysql
+test:
+  adapter: mysql2
+  database: test-expense
+  username: travis
+  encoding: utf8
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test-expense;'

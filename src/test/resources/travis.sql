@@ -6,7 +6,7 @@ USE `expensetracker`;
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` Long(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

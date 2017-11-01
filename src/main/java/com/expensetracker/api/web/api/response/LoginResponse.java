@@ -11,18 +11,18 @@ public class LoginResponse {
 
     private String role;
 
-    private long expiresAt;
+    private long expires;
 
     private String token;
 
     public LoginResponse() {
     }
 
-    public LoginResponse(long id, String name, String role, long expiresAt, String token) {
+    public LoginResponse(long id, String name, String role, long expires, String token) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.expiresAt = expiresAt;
+        this.expires = expires;
         this.token = token;
     }
 
@@ -38,8 +38,8 @@ public class LoginResponse {
         return role;
     }
 
-    public long getExpiresAt() {
-        return expiresAt;
+    public long getExpires() {
+        return expires;
     }
 
     public String getToken() {

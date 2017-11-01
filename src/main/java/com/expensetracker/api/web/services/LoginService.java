@@ -21,7 +21,7 @@ public class LoginService {
         this.loginDAO = loginDAO;
     }
 
-    public Response login(LoginRequest loginRequest) {
+    public LoginResponse login(LoginRequest loginRequest) {
         final long nowMillis = System.currentTimeMillis();
         final long expMillis = nowMillis + TimeUnit.HOURS.toMillis(5);
         UserLogin userLogin = loginDAO.checkLogin(loginRequest.getEmail());
@@ -30,15 +30,13 @@ public class LoginService {
         if (!(userLogin.getPassword().equals(loginRequest.getPassword())))
             throw new WebApplicationException("Email and Password Not match", Response.Status.UNAUTHORIZED);
         String JwtToken = createJWT(userLogin.getId(), nowMillis, expMillis);
-        return Response.ok(
-                new LoginResponse(
+        return new LoginResponse(
                         userLogin.getId(),
                         "Blesson Babu",
                         "Admin",
                         expMillis,
                         JwtToken
-                )
-        ).build();
+                );
     }
 
     private String createJWT(long employeeId, long nowMillis, long expMillis) {

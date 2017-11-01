@@ -1,6 +1,7 @@
 package com.expensetracker.api.web.resources;
 
 import com.expensetracker.api.web.api.request.LoginRequest;
+import com.expensetracker.api.web.api.response.LoginResponse;
 import com.expensetracker.api.web.services.LoginService;
 
 import javax.ws.rs.Consumes;
@@ -22,7 +23,7 @@ public class LoginResource {
     }
 
     @POST
-    public Response createLogin(LoginRequest loginRequest) {
+    public LoginResponse createLogin(LoginRequest loginRequest) {
         return loginService.login(loginRequest);
     }
 }

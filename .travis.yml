@@ -2,6 +2,9 @@ language: java
 jdk:
   - oraclejdk8
 
+before_install:
+  - mysql -u travis --password="" < travis.sql
+
 install: true
 script:
   - mvn clean install
@@ -13,9 +16,7 @@ services:
   - mysql
 test:
   adapter: mysql2
-  database: test-expense
+  database: expensetracker
   username: travis
   encoding: utf8
 
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS test-expense;'

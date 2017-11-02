@@ -19,3 +19,6 @@ test:
   database: expensetracker
   username: travis
   encoding: utf8
+
+notifications:
+    slack: blesson:g9I5uYwPK5XVsfzxHve2u8BX

@@ -19,19 +19,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class IntegrationTest {
 
-    public IntegrationTest() {
-    }
-
     private static final String CONFIG_PATH = resourceFilePath("test-config.yml");
-
     @ClassRule
     public static final DropwizardAppRule<ExpenseConfiguration> RULE = new DropwizardAppRule<>(
             ExpenseApplication.class, CONFIG_PATH);
 
+    public IntegrationTest() {
+    }
+
     @Test
     public void testPostLogin() throws Exception {
         final LoginRequest loginRequest = new LoginRequest("test@test.com", "test");
-        final LoginResponse loginResponse= RULE.client().target(
+        final LoginResponse loginResponse = RULE.client().target(
                 String.format("http://localhost:%d/login", RULE.getLocalPort()))
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.json(loginRequest))

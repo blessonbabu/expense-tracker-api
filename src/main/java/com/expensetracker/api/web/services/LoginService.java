@@ -4,7 +4,6 @@ import com.expensetracker.api.web.api.request.LoginRequest;
 import com.expensetracker.api.web.api.response.LoginResponse;
 import com.expensetracker.api.web.core.UserLogin;
 import com.expensetracker.api.web.db.LoginDAO;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -31,12 +30,12 @@ public class LoginService {
             throw new WebApplicationException("Email and Password Not match", Response.Status.UNAUTHORIZED);
         String JwtToken = createJWT(userLogin.getId(), nowMillis, expMillis);
         return new LoginResponse(
-                        userLogin.getId(),
-                        "Blesson Babu",
-                        "Admin",
-                        expMillis,
-                        JwtToken
-                );
+                userLogin.getId(),
+                "Blesson Babu",
+                "Admin",
+                expMillis,
+                JwtToken
+        );
     }
 
     private String createJWT(long employeeId, long nowMillis, long expMillis) {

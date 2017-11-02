@@ -13,6 +13,9 @@ public class UserLogin {
 
     private String password;
 
+    public UserLogin() {
+    }
+
     public UserLogin(long id, String email, String password) {
         this.id = id;
         this.email = email;

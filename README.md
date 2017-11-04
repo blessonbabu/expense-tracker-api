@@ -9,5 +9,5 @@ Simple webapi to track the daily expense
 
 * To run the server run.
 
-        java -jar target/web-api-1.2.0-SNAPSHOT.jar server config.yml
+        java -jar target/web-api-1.2.0.jar server config.yml
 

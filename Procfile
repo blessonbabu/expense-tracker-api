@@ -1,0 +1,1 @@
+web: java -jar target/web-api-1.2.0.jar server config.yml

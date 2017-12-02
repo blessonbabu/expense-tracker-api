@@ -2,9 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 
-before_install:
-  - mysql -u travis --password="" < src/test/resources/travis.sql
-
 install: true
 script:
   - mvn clean install
@@ -14,11 +11,6 @@ cache:
 
 services:
   - mysql
-test:
-  adapter: mysql2
-  database: expensetracker
-  username: travis
-  encoding: utf8
 
 notifications:
     slack: blesson:g9I5uYwPK5XVsfzxHve2u8BX
